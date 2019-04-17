@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+
+   char message[122]; //size of largest character (Z) in ASCII code = 122
+   int key; //key to be shifted by
+   int i; //
+   int choice;
+
+   
+   printf("encrypt - 1\n");
+   printf("decrypt - 2\n");
+   printf("Enter operation of message: \n");
+   scanf("%d\n", &choice);
+
+   switch(choice)
+   {
+      case 1:
+      {
+         printf("Enter message to encrypt\n");
+         scanf("%s", message);
+
+         printf("Enter key\n");
+         scanf("%d", &key);
+
+         for (i = 0; message[i] != '\0'; i++)
+         {
+            message[i] = message[i] + shift;
+            if (message[i] > 'z')
+               message[i] = message[i] - 26;
+         }
+         printf("Encrypted message: %s\n", message);
+         break;
+      }
+      case 2: 
+      {
+         printf("Enter message to decrypt\n");
+         scanf("%s", message);
+
+         printf("Enter key\n");
+         scanf("%d", &key);
+
+         for (i = 0; message[i] != '\0'; i++)
+         {
+            message[i] = message[i] + key;
+            if (message[i] < 'a')
+               message[i] = message[i] + 26;
+         }
+         
+         printf("Decrypted message: %s\n", message);
+         break;
+      }
+   }
+
+   return 0;
+}
