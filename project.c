@@ -1,3 +1,13 @@
+/*
+   Title: Rotation Cipher
+   Description: Rotation cipher encrypts a text message by substituting each letter in the alphabet with a letter a fixed number of places away
+                in the alphabet. the "key" is the number of letters by which the aplhabet is shifted when calculating the sunstitution.
+   Usage: This program produces a menu to select either to encrypt or decrypt a message inputted by the user as a rotation cipher.
+          The program will then encrypt or decrypt the inputted text based on the users selection and print the final product to the screen.
+            
+   How it works: 
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
  
