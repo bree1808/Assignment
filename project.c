@@ -18,13 +18,9 @@ void decryptionSubstitution();
 void quit();
  
 int main () {
-    // insert code here...
     
     
     int input;
-         
-     
-    
          
         printf("1. encryption of rotation cipher\n");
         printf("2. decyrption of rotation cipher\n");
@@ -32,14 +28,8 @@ int main () {
         printf("4. decyrption of substitution cipher\n");
         printf("5. Quit\n");
          
-         
-         
-         
-     
-    printf("\nChoose an option and press enter:   ");
-     
-     
-    scanf("%d",&input);
+        printf("\nChoose an option and press enter:   ");
+        scanf("%d",&input);
      
      
      
@@ -68,30 +58,41 @@ int main () {
     return 0;
     }
 }
-
-char * message;
-int key;
-int i;
- 
-void encryptionRotation(){
-printf("Enter message to encrypt:\n");
-scanf("%s", message); //user enters message to encrypt
-
-printf("Enter key shift:/n"); //user enters key shift of alphabet
-scanf("%d", &key); //stores key shift into variable key
-
-for (i = 0; message[i] != '\0'; i++)
-    {
-        message[i] = message[i] + key;
-            if (message[i] < 'a') 
-                message[i] = message[i] - 26;
-             printf("Encrypted message: %s\n", message);
-    }
-}
- 
-void decryptionRotation()
-{
-    printf("\nChoose from a save file");
+void encryptionRotation();
+	char message[1000], ch;
+	int i, key;
+	
+	printf("Enter a message to encrypt: ");
+    fgets(message, 1000, stdin);
+	
+	printf("Enter key: ");
+	scanf("%d", &key);
+	
+	for(i = 0; message[i] != '\0'; ++i){
+		ch = message[i];
+		
+		if(ch >= 'a' && ch <= 'z'){
+			ch = ch + key;
+			
+			if(ch > 'z'){
+				ch = ch - 'z' + 'a' - 1;
+			}
+			
+			message[i] = ch;
+		}
+		else if(ch >= 'A' && ch <= 'Z'){
+			ch = ch + key;
+			
+			if(ch > 'Z'){
+				ch = ch - 'Z' + 'A' - 1;
+			}
+			
+			message[i] = ch;
+		}
+	}
+	
+	printf("Encrypted message: %s", message);
+	
 }
 
 void encryptionSubstitution(){
