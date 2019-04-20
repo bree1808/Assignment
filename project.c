@@ -23,7 +23,7 @@ int main () {
     int input;
          
         printf("1. encryption of rotation cipher\n");
-        printf("2. decyrption of rotation cipher\n");
+        printf("2. decryption of rotation cipher\n");
         printf("3. encryption of substitution cipher\n");
         printf("4. decyrption of substitution cipher\n");
         printf("5. Quit\n");
@@ -94,6 +94,43 @@ void encryptionRotation();
 	printf("Encrypted message: %s", message);
 	
 }
+
+void decryptionRotation(){
+char message[1000], ch;
+	int i, key;
+	
+	printf("Enter a message to decrypt: ");
+    fgets(message, 1000, stdin);
+	
+	printf("Enter key: ");
+	scanf("%d", &key);
+	
+	for(i = 0; message[i] != '\0'; ++i){
+		ch = message[i];
+		
+		if(ch >= 'a' && ch <= 'z'){
+			ch = ch - key;
+			
+			if(ch < 'a'){
+				ch = ch + 'z' - 'a' + 1;
+			}
+			
+			message[i] = ch;
+		}
+		else if(ch >= 'A' && ch <= 'Z'){
+			ch = ch - key;
+			
+			if(ch < 'A'){
+				ch = ch + 'Z' - 'A' + 1;
+			}
+			
+			message[i] = ch;
+		}
+	}
+	
+	printf("Decrypted message: %s", message);
+}
+
 
 void encryptionSubstitution(){
 printf("\nStarting new game....");
