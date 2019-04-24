@@ -11,8 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
  
-void encryptionRotation();
-void decryptionRotation();
+
 void encryptionSubstitution();
 void decryptionSubstitution();
 void quit();
@@ -25,7 +24,7 @@ int main () {
         printf("1. encryption of rotation cipher\n");
         printf("2. decryption of rotation cipher\n");
         printf("3. encryption of substitution cipher\n");
-        printf("4. decyrption of substitution cipher\n");
+        printf("4. decryption of substitution cipher\n");
         printf("5. Quit\n");
          
         printf("\nChoose an option and press enter:   ");
@@ -33,10 +32,45 @@ int main () {
      
      
      
-    if(input <= 5 && input >= 1)
+    
     switch (input) {
         case 1:
-            encryptionRotation();;
+            	char message[1000], ch;
+            	int i, key;
+            	
+            	printf("Enter a message to encrypt: ");
+                fgets(message, 1000, stdin);
+            	
+            	printf("Enter key: ");
+            	scanf("%d", &key);
+            	
+            	for(i = 0; message[i] != '\0'; ++i){
+            		ch = message[i];
+            		
+            		if(ch >= 'a' && ch <= 'z'){
+            			ch = ch + key;
+            			
+            			if(ch > 'z'){
+            				ch = ch - 'z' + 'a' - 1;
+            			}
+            			
+            			message[i] = ch;
+            		}
+            		else if(ch >= 'A' && ch <= 'Z'){
+            			ch = ch + key;
+            			
+            			if(ch > 'Z'){
+            				ch = ch - 'Z' + 'A' - 1;
+            			}
+            			
+            			message[i] = ch;
+            		}
+            	}
+            	
+            	printf("Encrypted message: %s", message);
+            	
+            }
+
             break;
         case 2:
             decryptionRotation();
@@ -52,11 +86,6 @@ int main () {
             break;
     }
          
-    else {
-     
-    printf("\nInvalid choice!");
-    return 0;
-    }
 }
 void encryptionRotation();
 	char message[1000], ch;
