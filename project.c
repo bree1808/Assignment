@@ -136,25 +136,22 @@ int main () {
                 return 0;
             break;
         case 4:
-        printf("Enter plain text: ");
-        fgetc(stdin);
-        fgets(msg, 255, stdin);
-        
-            substitution_key[j] = alpha[j];
+       printf("Enter a unique key of 26 characters for encryption: "); // KUDPTEVJSBLWAIZGXCMNFYHROQ
+    scanf("%s", key);
     
-                for(i = 0; i < strlen(cipher_text); i++)
-                {
-                    for(j = 0; j < 26; j++)
-                    {
-                        if(rndm[j] == cipher_text[i])
-                        {
-                            cipher_text[i] = alpha[j];
-                            break;
-                        }
-                    }
-                }
-                printf("\nEncrypted message: %s", cipher_text);
-                return 0;
+    for(i = 0; i < strlen(cipher_text); i++)
+    {
+        for(j = 0; j < 26; j++)
+        {
+            if(alpha[j] == cipher_text[i])
+            {
+                cipher_text[i] = key[j];
+                break;
+            }
+        }
+    }
+    printf("\nEncrypted message: %s", cipher_text);
+    return 0;
                 
             break;
         case 5:

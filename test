@@ -36,7 +36,7 @@ int main () {
     if(input <= 5 && input >= 1)
     switch (input) {
         case 1:
-            encryptionRotation();;
+            encryptionRotation();
             break;
         case 2:
             decryptionRotation();
