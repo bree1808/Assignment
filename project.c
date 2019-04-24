@@ -1,165 +1,182 @@
-/*
-   Title: Rotation Cipher
-   Description: Rotation cipher encrypts a text message by substituting each letter in the alphabet with a letter a fixed number of places away
-                in the alphabet. the "key" is the number of letters by which the aplhabet is shifted when calculating the sunstitution.
-   Usage: This program produces a menu to select either to encrypt or decrypt a message inputted by the user as a rotation cipher.
-          The program will then encrypt or decrypt the inputted text based on the users selection and print the final product to the screen.
-            
-   How it works: 
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+char *encryptionSub(char[]);
+char *decryptionSub(char[]);
+char *encryptionRot();
+char *decryptionRot();
 
-char *encryption(char cipher_text[]);
-char *decryption(char cipher_text[]);
-char alpha[26] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-char rndm[26] = {'k', 'u', 'd', 'p', 't', 'e', 'v', 'j', 's', 'b', 'l', 'w', 'a', 'i', 'z', 'g', 'x', 'c', 'm', 'n', 'f', 'y', 'h', 'r', 'o', 'q'};
-
+char alpha[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+//char rndm[26]  = {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
+char encryptionSubKey[26];
 size_t strlen(const char *str);
-char cipher_text[1000];
- 
- 
-int main () {
-    char message[1000], ch, substitution_key[26];
-    int i, key;
-    int j;
-    char msg[255];
-    char cipher_text[255];
+
+int main()
+{
+    int input, i;
+    char *c_text, *cipherText, msg[255], message[255], encryptionSubKey[26];
     
-    
-    int input;
+    printf("1. encryption of rotation cipher\n");
+    printf("2. decryption of rotation cipher\n");
+    printf("3. encryption of substitution cipher\n");
+    printf("4. decyrption of substitution cipher\n");
+    printf("5. Quit\n");
          
-        printf("1. encryption of rotation cipher\n");
-        printf("2. decryption of rotation cipher\n");
-        printf("3. encryption of substitution cipher\n");
-        printf("4. decryption of substitution cipher\n");
-        printf("5. Quit\n");
-         
-        printf("\nChoose an option and press enter:   ");
-        scanf("%d",&input);
-     
+    printf("\nChoose an option and press enter:   ");
+    scanf("%d",&input);
     
-    switch (input) {
-        case 1: //encryption rotation
-        	printf("Enter a message to encrypt: ");
-        	fgetc(stdin);
-            fgets(message, 1000, stdin);
-        	
-        	printf("Enter key: ");
-        	scanf("%d", &key);
-        	
-        	for(i = 0; message[i] != '\0'; ++i){
-        		ch = message[i];
-        		
-        		if(ch >= 'a' && ch <= 'z'){
-        			ch = ch + key;
-        			
-        			if(ch > 'z'){
-        				ch = ch - 'z' + 'a' - 1;
-        			}
-        			
-        			message[i] = ch;
-        		}
-        		else if(ch >= 'A' && ch <= 'Z'){
-        			ch = ch + key;
-        			
-        			if(ch > 'Z'){
-        				ch = ch - 'Z' + 'A' - 1;
-        			}
-        			
-        			message[i] = ch;
-        		}
-        	}
-        	
-        	printf("Encrypted message: %s", message);
+    switch (input)
+    {
+        case 1:
+            encryptionRot();
             break;
-            
         case 2:
-            printf("Enter a message to decrypt: ");
-            fgetc(stdin);
-            fgets(message, 1000, stdin);
-        	
-        	printf("Enter key: ");
-        	scanf("%d", &key);
-        	
-        	for(i = 0; message[i] != '\0'; ++i){
-        		ch = message[i];
-        		
-        		if(ch >= 'a' && ch <= 'z'){
-        			ch = ch - key;
-        			
-        			if(ch < 'a'){
-        				ch = ch + 'z' - 'a' + 1;
-        			}
-        			
-        			message[i] = ch;
-        		}
-        		else if(ch >= 'A' && ch <= 'Z'){
-        			ch = ch - key;
-        			
-        			if(ch < 'A'){
-        				ch = ch + 'Z' - 'A' + 1;
-        			}
-        			
-        			message[i] = ch;
-        		}
-        	}
-        	
-        	printf("Decrypted message: %s", message);
-            
+            decryptionRot();
             break;
-            
         case 3:
-        printf("Enter plain text: ");
-        fgetc(stdin);
-        fgets(msg, 255, stdin);
-        
-        printf("Enter a unique key of 26 characters for encryption: "); // KUDPTEVJSBLWAIZGXCMNFYHROQ
-        fgets(substitution_key, 27, stdin);
-    
-            for(i = 0; i < strlen(cipher_text); i++)
-            {
-                for(j = 0; j < 26; j++)
-                {
-                    if(alpha[j] == cipher_text[i])
-                    {
-                        cipher_text[i] = substitution_key[j];
-                        
-                break;
-                    }
-                }
-            }
-                printf("\nEncrypted message: %s", cipher_text);
-                return 0;
+            printf("Enter a message: ");
+            fgetc(stdin);
+            fgets(msg, 1000, stdin);
+            c_text = encryptionSub(msg);
             break;
         case 4:
-       printf("Enter a unique key of 26 characters for encryption: "); // KUDPTEVJSBLWAIZGXCMNFYHROQ
-    scanf("%s", key);
+            printf("Enter a message: ");
+            fgetc(stdin);
+            fgets(message, 1000, stdin);
+            cipherText = decryptionSub(message);
+            break;
+        case 5:
+            break;
+        default:
+            printf("Enter valid choice!");
+            break;
+    }
+}
+char *encryptionRot()
+{
+    char message[1000], ch;
+	int i, key;
+	
+	printf("Enter a message to encrypt: ");
+	fgetc(stdin);
+    fgets(message, 1000, stdin);
+	
+	printf("Enter key: ");
+	scanf("%d", &key);
+	
+	for(i = 0; message[i] != '\0'; ++i)
+	{
+		ch = message[i];
+		
+		if(ch >= 'a' && ch <= 'z')
+		{
+			ch = ch + key;
+			
+			if(ch > 'z')
+			{
+				ch = ch - 'z' + 'a' - 1;
+			}
+			
+			message[i] = ch;
+		}
+		else if(ch >= 'A' && ch <= 'Z'){
+			ch = ch + key;
+			
+			if(ch > 'Z')
+			{
+				ch = ch - 'Z' + 'A' - 1;
+			}
+			
+			message[i] = ch;
+		}
+	}
+	
+	printf("Encrypted message: %s", message);
+	
+	return 0;
+}
+
+char *decryptionRot()
+{
+    char message[1000], ch;
+	int i, key;
+	
+	printf("Enter a message to decrypt: ");
+	fgetc(stdin);
+    fgets(message, 1000, stdin);
+	
+	printf("Enter key: ");
+	scanf("%d", &key);
+	
+	for(i = 0; message[i] != '\0'; ++i)
+	{
+		ch = message[i];
+		
+		if(ch >= 'A' && ch <= 'Z')
+		{
+			ch = ch - key;
+			
+			if(ch < 'A')
+			{
+				ch = ch + 'Z' - 'A' + 1;
+			}
+			
+			message[i] = ch;
+		}
+	}
+	
+	printf("Decrypted message: %s", message);
+	
+	return 0;
+}
+
+char *encryptionSub(char outputText[])
+{
+    int i, val, j;
+    char msg[255];
     
-    for(i = 0; i < strlen(cipher_text); i++)
+    printf("Enter a unique key of 26 characters for encryption: "); 
+    scanf("%s", encryptionSubKey);
+    
+    for(i = 0; i < strlen(outputText); i++)
     {
         for(j = 0; j < 26; j++)
         {
-            if(alpha[j] == cipher_text[i])
+            if(alpha[j] == outputText[i])
             {
-                cipher_text[i] = key[j];
+                outputText[i] = encryptionSubKey[j];
                 break;
             }
         }
     }
-    printf("\nEncrypted message: %s", cipher_text);
+    printf("\nEncrypted message: %s", outputText);
     return 0;
-                
-            break;
-        case 5:
-            
-            break;
-    }
-         
 }
-
-	
+char *decryptionSub(char outputText[])
+{
+    int i, val, j;
+    char message[255];
+    char rndm[26];
+    printf("Enter substitution key: ");
+    fgetc(stdin);
+    fgets(rndm, 26, stdin);
+    
+    //encryptionSubKey[j] == rndm[26];
+    
+    
+    for(i = 0; i < strlen(outputText); i++)
+    {
+        for(j = 0; j < 26; j++)
+        {
+            if(rndm[j] == outputText[i])//if(rndm[j] == outputText[i])
+            {
+                outputText[i] = alpha[j];
+                break;
+            }
+        }
+    }
+    printf("\nDecrypted message: %s", outputText);
+    return 0;
+}	
 
