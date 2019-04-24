@@ -8,14 +8,17 @@ char *encryptionRot();
 char *decryptionRot();
 
 char alpha[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-//char rndm[26]  = {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
+char rndm[26]= {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
 char encryptionSubKey[26];
 size_t strlen(const char *str);
 
 int main()
 {
-    int input, i;
-    char *c_text, *cipherText, msg[255], message[255], encryptionSubKey[26];
+    int input;
+    char *c_text;
+    char *cipherText, msg[255];
+    char message[255]; 
+    char encryptionSubKey[26];
     
     printf("1. encryption of rotation cipher\n");
     printf("2. decryption of rotation cipher\n");
@@ -131,9 +134,9 @@ char *decryptionRot()
 	return 0;
 }
 
-char *encryptionSub(char outputText[])
+char *encryptionSub(char (outputText[]))
 {
-    int i, val, j;
+    int i, j;
     char msg[255];
     
     printf("Enter a unique key of 26 characters for encryption: "); 
@@ -153,30 +156,26 @@ char *encryptionSub(char outputText[])
     printf("\nEncrypted message: %s", outputText);
     return 0;
 }
-char *decryptionSub(char outputText[])
+char *decryptionSub(char (outputText[]))
 {
-    int i, val, j;
-    char message[255];
-    char rndm[26];
-    printf("Enter substitution key: ");
-    fgetc(stdin);
-    fgets(rndm, 26, stdin);
+   int i, j;
+    char msg[255];
     
-    //encryptionSubKey[j] == rndm[26];
-    
+    printf("Enter a unique key of 26 characters for decryption: "); 
+    scanf("%s", encryptionSubKey);
     
     for(i = 0; i < strlen(outputText); i++)
     {
         for(j = 0; j < 26; j++)
         {
-            if(rndm[j] == outputText[i])//if(rndm[j] == outputText[i])
+            if(encryptionSubKey[j] == outputText[i])
             {
                 outputText[i] = alpha[j];
                 break;
             }
         }
     }
-    printf("\nDecrypted message: %s", outputText);
+    printf("\nEncrypted message: %s", outputText);
     return 0;
 }	
 
