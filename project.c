@@ -8,16 +8,17 @@ char *encryptionRot();
 char *decryptionRot();
 
 char alpha[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-char rndm[26]= {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
+//char rndm[26]= {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
 char encryptionSubKey[26];
+char decryptionSubKey[26];
 size_t strlen(const char *str);
 
 int main()
 {
     int input;
     char *c_text;
-    char *cipherText, msg[255];
-    char message[255]; 
+    char *cipherText, msg[1000];
+    char message[1000]; 
     char encryptionSubKey[26];
     
     printf("1. encryption of rotation cipher\n");
@@ -137,7 +138,7 @@ char *decryptionRot()
 char *encryptionSub(char (outputText[]))
 {
     int i, j;
-    char msg[255];
+    char msg[1000];
     
     printf("Enter a unique key of 26 characters for encryption: "); 
     scanf("%s", encryptionSubKey);
@@ -161,17 +162,17 @@ char *decryptionSub(char (outputText[]))
    int i, j;
     char message[255];
     
-    //printf("Enter a unique key of 26 characters for decryption: "); 
-    //scanf("%s", encryptionSubKey);
-    message[255] = rndm[26];
-    outputText[255] = alpha[26];
+    printf("Enter a unique key of 26 characters for decryption: "); 
+    scanf("%s", decryptionSubKey);
+    message[1000] = decryptionSubKey[26];
+    outputText[1000] = alpha[26];
     
     
     for(i = 0; i < strlen(outputText); i++)
     {
         for(j = 0; j < 26; j++)
         {
-            if (rndm[j] == outputText[i])//if(encryptionSubKey[j] == outputText[i])
+            if (decryptionSubKey[j] == outputText[i])//if(encryptionSubKey[j] == outputText[i])
             {
                 outputText[i] = alpha[j];
                 break;
