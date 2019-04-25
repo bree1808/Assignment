@@ -171,9 +171,9 @@ char *decryptionSub(char (outputText[]))
     {
         for(j = 0; j < 26; j++)
         {
-            if (alpha[j] == outputText[i])//if(encryptionSubKey[j] == outputText[i])
+            if (rndm[j] == outputText[i])//if(encryptionSubKey[j] == outputText[i])
             {
-                outputText[i] = rndm[j];
+                outputText[i] = alpha[j];
                 break;
             }
         }
