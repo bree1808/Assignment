@@ -159,23 +159,26 @@ char *encryptionSub(char (outputText[]))
 char *decryptionSub(char (outputText[]))
 {
    int i, j;
-    char msg[255];
+    char message[255];
     
-    printf("Enter a unique key of 26 characters for decryption: "); 
-    scanf("%s", encryptionSubKey);
+    //printf("Enter a unique key of 26 characters for decryption: "); 
+    //scanf("%s", encryptionSubKey);
+    message[255] = rndm[26];
+    outputText[255] = alpha[26];
+    
     
     for(i = 0; i < strlen(outputText); i++)
     {
         for(j = 0; j < 26; j++)
         {
-            if(encryptionSubKey[j] == outputText[i])
+            if (alpha[j] == outputText[i])//if(encryptionSubKey[j] == outputText[i])
             {
-                outputText[i] = alpha[j];
+                outputText[i] = rndm[j];
                 break;
             }
         }
     }
     printf("\nEncrypted message: %s", outputText);
     return 0;
-}	
-
+    
+}
