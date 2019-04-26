@@ -30,19 +30,20 @@ char *decryptionRotKey();
 char *decryptionRotNoKey();
 
 char alpha[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-char encryptionSubKey[26];
+char *encryptionSubKey[26];
 char decryptionSubKey[26];
+char outputText[1000];
 //size_t strlen(const char *str);
 
 int main()
 {
     //initialising variables within main()
     int input; //number from the menu entered by the user 
-    char c_text; //variable for message entered by the user in encryption subsitution
-    char cipherText, msg[1000]; //cipherText is the variable for the message entered by the user in decryption substitution.
+    char *c_text; //variable for message entered by the user in encryption subsitution
+    char *cipherText, msg[1000]; //cipherText is the variable for the message entered by the user in decryption substitution.
                                 // msg[100] is the variable for the inputted message by the user and the output message for encryption substitution.
     char message[1000]; //variable for inputted message by the user and the outputted message for decryption substitution
-    char encryptionSubKey[26]; //variable for key for encryption substitution
+    //char encryptionSubKey[26]; //variable for key for encryption substitution
     
     //menu for user to select option
     printf("1. encryption of rotation cipher\n");
@@ -257,10 +258,10 @@ char *decryptionRotNoKey()
 char *encryptionSub(char (outputText[]))
 {
     int i, j;
-    char msg[1000];
+    //char msg[1000];
     
     printf("Enter a unique key of 26 characters for encryption: "); 
-    scanf("%s", encryptionSubKey);
+    scanf("%s", encryptionSubKey[26]);
     
     for(i = 0; i < strlen(outputText); i++)
     {
@@ -279,7 +280,7 @@ char *encryptionSub(char (outputText[]))
 char *decryptionSub(char (outputText[]))
 {
    int i, j;
-    char message[255];
+    char message[1000];
     
     printf("Enter a unique key of 26 characters for decryption: "); 
     scanf("%s", decryptionSubKey);
