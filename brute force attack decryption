@@ -1,0 +1,118 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+char *decryptionRotKey();
+char *decryptionRotNoKey();
+
+//char alpha[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+//char rndm[26]= {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
+//char encryptionSubKey[26];
+//char decryptionSubKey[26];
+size_t strlen(const char *str);
+
+int main()
+{
+    int input;
+    char *c_text;
+    char *cipherText, msg[1000];
+    char message[1000]; 
+    char encryptionSubKey[26];
+    
+    printf("1. decryption of rotation cipher with key\n");
+    printf("2. decryption of rotation cipher without key\n");
+    
+         
+    printf("\nChoose an option and press enter:   ");
+    scanf("%d",&input);
+    
+    switch (input)
+    {
+        case 1:
+            decryptionRotKey();
+            break;
+        case 2:
+            decryptionRotNoKey();
+            break;
+        
+        default:
+            printf("Enter valid choice!");
+            break;
+    }
+}
+
+char *decryptionRotKey()
+{
+    char message[1000], ch;
+	int i, key;
+	
+	printf("Enter a message to decrypt: ");
+	fgetc(stdin);
+    fgets(message, 1000, stdin);
+	
+	printf("Enter key: ");
+	scanf("%d", &key);
+	
+	for(i = 0; message[i] != '\0'; ++i)
+	{
+		ch = message[i];
+		
+		if(ch >= 'A' && ch <= 'Z')
+		{
+			ch = ch - key;
+			
+			if(ch < 'A')
+			{
+				ch = ch + 'Z' - 'A' + 1;
+			}
+			
+			message[i] = ch;
+		}
+	}
+	
+	printf("Decrypted message: %s", message);
+	
+	return 0;
+}
+
+char *decryptionRotNoKey()
+{
+    char message[1000], ch;
+	int i, key = 0;
+	
+	printf("Enter a message to decrypt: ");
+	fgetc(stdin);
+    fgets(message, 1000, stdin);
+	
+	//printf("Enter key: ");
+	//scanf("%d", &key);
+	
+	while (key < 25)
+	{
+    	for(i = 0; message[i] != '\0'; ++i)
+    	{
+    		ch = message[i];
+    		
+    		if(ch >= 'A' && ch <= 'Z')
+    		{
+    			ch = ch - 1;
+    			
+    			if(ch < 'A')
+    			{
+    				ch = ch + 'Z' - 'A' + 1;
+    			}
+    			
+    			message[i] = ch;
+    		}
+    	}
+    	
+    	
+        key++;
+    	printf("\nKey: %d", key);
+    	printf("\nDecrypted message: %s", message);
+    }
+    	
+	
+	return 0;
+}
