@@ -10,6 +10,7 @@ char *decryptionRotNoKey();
 //char rndm[26]= {'K', 'U', 'D', 'P', 'T', 'E', 'V', 'J', 'S', 'B', 'L', 'W', 'A', 'I', 'Z', 'G', 'X', 'C', 'M', 'N', 'F', 'Y', 'H', 'R', 'O', 'Q'};
 //char encryptionSubKey[26];
 //char decryptionSubKey[26];
+
 size_t strlen(const char *str);
 
 int main()
@@ -108,7 +109,7 @@ char *decryptionRotNoKey()
     	}
     	
     	
-        key++;
+       key++;
     	printf("\nKey: %d", key);
     	printf("\nDecrypted message: %s", message);
     }
@@ -116,3 +117,4 @@ char *decryptionRotNoKey()
 	
 	return 0;
 }
+
