@@ -39,10 +39,11 @@ int main()
 {
     //initialising variables within main()
     int input; //number from the menu entered by the user 
-    char *c_text; //variable for message entered by the user in encryption subsitution
-    char *cipherText, msg[1000]; //cipherText is the variable for the message entered by the user in decryption substitution.
+    //char *c_text; //variable for message entered by the user in encryption subsitution
+    //char *cipherText, 
+    char msg[1000]; //cipherText is the variable for the message entered by the user in decryption substitution.
                                 // msg[100] is the variable for the inputted message by the user and the output message for encryption substitution.
-    char message[1000]; //variable for inputted message by the user and the outputted message for decryption substitution
+     char message[1000]; //variable for inputted message by the user and the outputted message for decryption substitution
     //char encryptionSubKey[26]; //variable for key for encryption substitution
     
     //menu for user to select option
@@ -87,13 +88,15 @@ int main()
             printf("Enter a message: ");
             fgetc(stdin);
             fgets(msg, 1000, stdin);
-            c_text = encryptionSub(msg);
+            encryptionSub(msg);
+            //c_text = encryptionSub(msg);
             break;
         case 4:
             printf("Enter a message: ");
             fgetc(stdin);
             fgets(message, 1000, stdin);
-            cipherText = decryptionSub(message);
+            decryptionSub(message);
+            //cipherText = decryptionSub(message);
             break;
         case 5:
             break;
@@ -146,39 +149,6 @@ char *encryptionRot()
 	return 0;
 }
 
-/*char *decryptionRot()
-{
-    char message[1000], ch;
-	int i, key;
-	
-	printf("Enter a message to decrypt: ");
-	fgetc(stdin);
-    fgets(message, 1000, stdin);
-	
-	printf("Enter key: ");
-	scanf("%d", &key);
-	
-	for(i = 0; message[i] != '\0'; ++i)
-	{
-		ch = message[i];
-		
-		if(ch >= 'A' && ch <= 'Z')
-		{
-			ch = ch - key;
-			
-			if(ch < 'A')
-			{
-				ch = ch + 'Z' - 'A' + 1;
-			}
-			
-			message[i] = ch;
-		}
-	}
-	
-	printf("Decrypted message: %s", message);
-	
-	return 0;
-} */
 char *decryptionRotKey()
 {
     char message[1000], ch;
@@ -258,10 +228,10 @@ char *decryptionRotNoKey()
 char *encryptionSub(char (outputText[]))
 {
     int i, j;
-    //char msg[1000];
+    char encryptionSubKey[26];
     
     printf("Enter a unique key of 26 characters for encryption: "); 
-    scanf("%s", encryptionSubKey[26]);
+    scanf("%s", encryptionSubKey);
     
     for(i = 0; i < strlen(outputText); i++)
     {
