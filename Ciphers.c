@@ -12,7 +12,7 @@
                                      The "key" is the 26 encrypted letters.
                          Decryption: Decrypts the message by replacing each of the 26 "key" encrypted letters with alphabetic letters.
  * Usage: To run the program, in the terminal enter: 
-                        cd /projects/assignment1 <ENTER>
+                        cd /projects/Assignment <ENTER>
                         ./a.out <ENTER>
           After it has been set once, after each quit of the program, only ./a.out <ENTER> needs to be typed into the terminal to run again.
           This program produces a menu to select either to encrypt or decrypt a message inputted by the user as either a rotation cipher or a substitution cipher.
