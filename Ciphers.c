@@ -66,7 +66,7 @@ int main()
             
         case 2: //decryption rotation.
             //second menu for decryption rotation - user can choose to either decrypt with key given or test decryption keys without key given.
-            printf("1. Decryption of rotation cipher with key\n");
+            printf("\n1. Decryption of rotation cipher with key\n");
             printf("2. Decryption of rotation cipher without key\n");
     
          
