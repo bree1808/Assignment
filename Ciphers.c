@@ -54,7 +54,7 @@ int main()
     printf("4. Decryption of substitution cipher\n");
     printf("5. Quit\n");
          
-    printf("\nChoose an option (number) and press enter:   ");
+    printf("\nChoose an option (number) and press enter:   "); //user prompted to enter option number into temrinal.
     scanf("%d",&input); //option is stored in the variable input to be used in switch statement.
     
     //switch case used to select function based on users input option.
@@ -220,7 +220,6 @@ char *decryptionRotNoKey() //decryption rotation cipher without key.
 	return 0; //quits program.
 }
 
-
 char *encryptionSub(char (outputText[])) //encryption substitution - outputText is the message printed to screen after encryption.
 {
     int i, j; //initialising counter variables i and j to use in array size.
@@ -242,6 +241,7 @@ char *encryptionSub(char (outputText[])) //encryption substitution - outputText 
     printf("\nEncrypted message: %s", outputText); //prints new encrypted message to the terminal.
     return 0; //quits program.
 }
+
 char *decryptionSub(char (outputText[])) //decryption substitution - outputText is the message printed to screen after decryption.
 {
     int i, j; //initialising counter variables i and j to use in array size.
