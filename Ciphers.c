@@ -114,11 +114,12 @@ int main()
 }
 //function prototypes are defined below int main().
 
-//the user must input a message to encrypt in uppercase letters when promted, these will be stores in variable message. This can include spaces, punctuation (,?!, etc) as these will not change. 
-//the user will then enter a key shift in number form between 1-25, this will be stored in variable key.
-//the return value is sent to the terminal from the variable message.
-//the function substitutes each letter from the message with a letter a fixed number of places away (key) and sends the result to the screen.
-//limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
+/*	The user must input a message to encrypt in uppercase letters when promted, these will be stores in array message[1000]. This can include spaces, punctuation (,?!, etc) as these will not change. 
+  	The user will then enter a key shift in number form between 1-25, this will be stored in variable key.
+	The return value is sent to the terminal from the array message[1000].
+	The function substitutes each letter from the message (message[1000]) with a letter a fixed number of places away (key) and sends the result to the screen from array message[1000].
+	Limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
+*/
 char *encryptionRot() //encryption rotation cipher definition
 {
     char message[1000], ch; // initialising varables - message[1000] used as input and output message variable; ch used as character variable.
@@ -153,11 +154,12 @@ char *encryptionRot() //encryption rotation cipher definition
 	return 0; //quits program.
 }
 
-//the user must input a message to decrypt in uppercase letters when promted, these will be stores in variable message. This can include spaces, punctuation (,?!, etc) as these will not change. 
-//the user will then enter a key shift in number form between 1-25, this will be stored in variable key.
-//the return value is sent to the terminal from the variable message.
-//the function Decryption replaces each letter of the encrypted message with an inverse alphabet key shift and sends the result to the screen.
-//limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
+/*	The user must input a message to decrypt in uppercase letters when promted, these will be stores in array message[1000]. This can include spaces, punctuation (,?!, etc) as these will not change. 
+	The user will then enter a key shift in number form between 1-25, this will be stored in variable key.
+	The return value is sent to the terminal from the array message[1000].
+	The function replaces each letter of the encrypted message[1000] with an inverse alphabet key shift (alpha[26]) and sends the result to the screen.
+	Limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
+*/
 char *decryptionRotKey() //decryption rotation cipher with key definition.
 {
     char message[1000], ch; // initialising varables - message[1000] used as input and output message variable; ch used as character variable.
@@ -192,6 +194,12 @@ char *decryptionRotKey() //decryption rotation cipher with key definition.
 	return 0; //quits program.
 }
 
+/*	The user must input a message to decrypt in uppercase letters when promted, these will be stored in array message[1000]. This can include spaces, punctuation (,?!, etc) as these will not change. 
+	The function rotates through each possible key shift between 1-25 from variable key to print all possible 26 message decryptions and their keys to the screen. The user can then search through each printed message to find the correct english decrypted message.
+	The return values are sent to the terminal from the array message[26].
+	Limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
+	Another limitation includes not being able to only print the right decrypted message to the screen, the user must search through all decrypted key shifted messages to find the correct one.
+*/
 char *decryptionRotNoKey() //decryption rotation cipher without key.
 {
     char message[1000], ch; // initialising varables - message[1000] used as input and output message variable; ch used as character variable.
@@ -231,6 +239,12 @@ char *decryptionRotNoKey() //decryption rotation cipher without key.
 	return 0; //quits program.
 }
 
+/*	The user must input a message (as per switch statment) in uppercase letters (can include punctuation) which will be stored in array msg[1000]. msg is stored to be alphabetical with array alpha[26].
+	The user will then be promted to enter a 26 charcter key in uppercase letters, which will be stored in array encryptionSubKey[26].
+	The function then encrypts a message by replacing each of the 26 message letters from array alpha[26] with array encryptionsubKey[26], which encrypts each letter in the message.
+	The encrypted message is stored in outputText and printed to the screen.
+	Limitations include not being able to convert from lowercase letters to uppercase if user inputs message in lowercase. Another limitation is the msg arrray size being limited to 1000; if this size is exceeded, the message will not store and the function will not work.
+*/
 char *encryptionSub(char (outputText[])) //encryption substitution - outputText is the message printed to screen after encryption.
 {
     int i, j; //initialising counter variables i and j to use in array size.
@@ -253,6 +267,13 @@ char *encryptionSub(char (outputText[])) //encryption substitution - outputText 
     return 0; //quits program.
 }
 
+/*	The user must input an encrypted message (as per switch statment) in uppercase letters (can include punctuation) which will be stores in array msg[1000].
+	The user will then be promted to enter a 26 charcter key in uppercase letters, which will be stored in array decryptionsubKey[26]. Array msg is stored as the decryptionsubKey[26].
+	The function then decrypts a message by replacing each of the 26 message letters from array decryptionsubKey[26] with array alpha[26], which decrypts each letter in the message.
+	The decrypted message is stored in outputText[26] and printed to the screen.
+	Limitations include not being able to convert from lowercase letters to uppercase if user inputs message in lowercase. Another limitation is the arrray size being limited to 1000; if this size is exceeded, the message will not store and the function will not work.
+	As well as this, the function does not work is the key is unknown, limiting the ability to decrypt messages without a key.
+*/
 char *decryptionSub(char (outputText[])) //decryption substitution - outputText is the message printed to screen after decryption.
 {
     int i, j; //initialising counter variables i and j to use in array size.
