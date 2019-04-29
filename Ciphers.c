@@ -113,6 +113,12 @@ int main()
     }
 }
 //function prototypes are defined below int main().
+
+//the user must input a message to encrypt in uppercase letters when promted, these will be stores in variable message. This can include spaces, punctuation (,?!, etc) as these will not change. 
+//the user will then enter a key shift in number form between 1-25, this will be stored in variable key.
+//the return value is sent to the terminal from the variable message.
+//the function substitutes each letter from the message with a letter a fixed number of places away (key) and sends the result to the screen.
+//limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
 char *encryptionRot() //encryption rotation cipher definition
 {
     char message[1000], ch; // initialising varables - message[1000] used as input and output message variable; ch used as character variable.
@@ -147,6 +153,11 @@ char *encryptionRot() //encryption rotation cipher definition
 	return 0; //quits program.
 }
 
+//the user must input a message to decrypt in uppercase letters when promted, these will be stores in variable message. This can include spaces, punctuation (,?!, etc) as these will not change. 
+//the user will then enter a key shift in number form between 1-25, this will be stored in variable key.
+//the return value is sent to the terminal from the variable message.
+//the function Decryption replaces each letter of the encrypted message with an inverse alphabet key shift and sends the result to the screen.
+//limitations include the array size of the message being limited to 1000. If the message exceeds this size the message will not store and the function will not work.
 char *decryptionRotKey() //decryption rotation cipher with key definition.
 {
     char message[1000], ch; // initialising varables - message[1000] used as input and output message variable; ch used as character variable.
